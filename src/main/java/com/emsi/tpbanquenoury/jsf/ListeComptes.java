@@ -6,6 +6,7 @@ package com.emsi.tpbanquenoury.jsf;
 
 import com.emsi.tpbanquenoury.entity.CompteBancaire;
 import com.emsi.tpbanquenoury.service.GestionnaireCompte;
+import com.emsi.tpbanquenoury.util.Util;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -38,6 +39,13 @@ public class ListeComptes implements Serializable {
             allComptes = gestionnaire.getAllComptes();
         }
         return allComptes;
+    }
+
+    public String supprimerCompte(CompteBancaire compteBancaire) {
+        gestionnaire.supprimerCompte(compteBancaire);
+        Util.addFlashInfoMessage("Compte de " + compteBancaire.getNom()
+                + " supprimé");
+        return "listeComptes?faces-redirect=true";
     }
 
 }
