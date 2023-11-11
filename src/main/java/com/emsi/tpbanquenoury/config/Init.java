@@ -15,16 +15,15 @@ import jakarta.servlet.ServletContext;
 /**
  *
  * @author mac
- * 
- * Bean CDI pour créer 4 comptes au démarrage de l'application si la table des comptes est vide. 
+ *
+ * Bean CDI pour créer 4 comptes au démarrage de l'application si la table des
+ * comptes est vide.
  */
-
-
 public class Init {
-    
+
     @Inject
     private GestionnaireCompte compte;
-    
+
     public void init(
             @Observes
             @Initialized(ApplicationScoped.class) ServletContext context) {
@@ -35,6 +34,5 @@ public class Init {
             compte.persist(new CompteBancaire("George Harrison", 100000));
         }
     }
-    
-    
+
 }

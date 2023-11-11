@@ -10,7 +10,7 @@
     </persistence-unit>
     <properties>
         <property name="jakarta.persistence.schema-generation.database.action" 
-                  value="drop-and-create"/>
+                  value="create"/>
         <property name="eclipselink.logging.level" 
                   value="FINE"/>
     </properties>
