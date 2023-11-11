@@ -72,5 +72,7 @@ public class GestionnaireCompte {
     public CompteBancaire update(CompteBancaire compteBancaire) {
         return em.merge(compteBancaire);
     }
+    
+    
 
 }
