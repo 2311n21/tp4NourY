@@ -9,7 +9,9 @@ import jakarta.annotation.sql.DataSourceDefinition;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import jakarta.transaction.Transactional;
+import java.util.List;
 
 /**
  *
@@ -34,7 +36,6 @@ import jakarta.transaction.Transactional;
 )
 
 @RequestScoped
-
 public class GestionnaireCompte {
 
     @PersistenceContext(unitName = "banquePU")
@@ -43,6 +44,16 @@ public class GestionnaireCompte {
     @Transactional
     public void persist(CompteBancaire compte) {
         em.persist(compte);
+    }
+
+    public List<CompteBancaire> getAllComptes() {
+        Query query = em.createNamedQuery("CompteBancaire.findAll");
+        return query.getResultList();
+    }
+
+    public long nbComptes() {
+        Query query = em.createNamedQuery("CompteBancaire.count");
+        return (long) query.getSingleResult();
     }
 
 }
